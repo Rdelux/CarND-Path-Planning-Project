@@ -50,7 +50,7 @@ Localization information about other cars on the road is provided by the sensor 
 
 In order to avoid colliding into the car in front of our vehicle, a for loop is used to go through all the sensor fusion data that indicate the state of all the cars on the road and determine if the other cars are in the lane that we currently occupied and within a collision safety distance of 20m in front of our vehicle.  Once another vehicle is detected to be less than 20m ahead of our vehicle(line 280) in the same lane(line 269), a flag will be raised, the vehicle will decelerate to avoid collision (line 466 to 469), then the vehicle will enter into a state to decide if lane change is possible.
 
-Triggering the lane change state, the algorithm will first determine which lane that our vehicle is currently located.  If the vehicle is located in the left-most lane(lane 0) or the right-most lane(lane 2), the only option for lane change is to transistioning to the middle lane, lane 1. See Figure 1 and 2 for illustrations of lane changes to the middle lane.  On the other hand, if the vehicle is in the middle lane, it can go into the left lane or the right lane.  Left-lane change is prioritized over right-lane change due to regulation in many countries(see Figure 3).  
+Triggering the lane change state, the algorithm will first determine which lane that our vehicle is currently located.  If the vehicle is located in the left-most lane(lane 0)(line 288) or the right-most lane(lane 2)(line 335), the only option for lane change is to transistioning to the middle lane, lane 1. See Figure 1 and 2 for illustrations of lane changes to the middle lane.  On the other hand, if the vehicle is in the middle lane, it can go into the left lane or the right lane.  Left-lane change is prioritized over right-lane change due to regulation in many countries(see Figure 3).  
 
 ![alt text][image9]
 
@@ -60,11 +60,13 @@ Triggering the lane change state, the algorithm will first determine which lane 
 ![alt text][image8]
 
 *Figure 2: Simple Lane Change from Right-most Lane to Middle Lane*
-
+<br><br>
 
 ![alt text][image3]
 
 *Figure 3: Lane Change - Prioritizing Right-side Passing of Other Vehicle*
+<br><br>
 
+In order to safely execute a lane change, a number of factors need to be considered.  First of all, the there's another car occupying the target lane, it will not be safe to change lane.  In addition, if there is a vehicle in the target lane, which is situated not too much further ahead of the vehicle in front of us, a lane change will not be effective since one will need to perform another lane change immediately again once our vehicle arrived in our targeted lane.  This will cause an unsafe driving behaviour and it should be avoided.  Therefore it is important to consider if there's a vehicle located in the target lane that is a little further ahead (the safe distanced defined in the code is set to 25m, which is 5m more than the frontal car safe distance).  The car that is closest to our car and it is in the target lane in front of us will be identified and its distance from our vehicle will be used to decide if a lane change should be commenced. This is achieved by another for loop will go through all the other vehicles on the road.  See code from line 294 to 317 for left-most lane lane-changes operation.  In addition, if there's another vehicle approaching from behind on the targeted lane, a lane change will also not be safe.  Not only the position of the other vehicle is important but its velocity is also important for predicting its future state.  Its velocity will reduce the effective safe distance for car approach from behind.  These consideration are implemented in line 327 to 331 for lane 0, line 374 to 379 for lane 2, and 449 to 459 for lane 1. 
 
 Wrapping Back
