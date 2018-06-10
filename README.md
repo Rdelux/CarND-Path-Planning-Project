@@ -91,5 +91,24 @@ Since the velocity of the rear approaching car is considered, a more aggressive 
 *Figure 7: Safe Operation for Lane Change by Accounting for Future State of Other Vehicle*
 <br><br>
 
+The sequence of state can be summarized below:
+(1) Keep lane
+(2) Collision avoidance - is there a car in our lane that is within 20m: Yes->(3),(3a) ; No->(1)
+(3) Decelerate to avoid collision - is speed less than 49.5 MPH and not too close to other vehicle: Yes->(4) ; No->(3)
+(3a) Lane Change Consideration - which lane are we at: Lane 0->(5a) ; Lane 2->(5b) ; Lane 1->(5c)
+(4) Accelerate ->(1)
+(5a) Safe to change lane - is the closest car on the target change lane in front of us at least 25m away and the one behind us at least 20m away in the future state when we change lane: Yes->(6a) ; No ->(1)
+(5b) Safe to change lane - is the closest car on the target change lane in front of us at least 25m away and the one behind us at least 20m away in the future state when we change lane: Yes->(6a) ; No ->(1)
+(5c) Safe to change lane - is the closest car on the target change lane(left-lane priority) in front of us at least 25m away and the one behind us at least 20m away in the future state when we change lane: Yes->(6b) ; No ->(5d)
+(5d) Safe to change lane - is the closest car on the target change lane(right-side lane) in front of us at least 25m away and the one behind us at least 20m away in the future state when we change lane: Yes->(6c) ; No ->(1)
+(6a) Go to Lane 1 -> (1)
+(6b) Go to Lane 0 -> (1)
+(6c) Go to Lane 2 -> (1)
 
-Wrapping Back
+As a result, the eco vehicle was able to drive for more than 32 miles without any incident, which is more than 7 times the requirement. See Figure 8 for confirmation.
+
+![alt text][image1]
+
+*Figure 8: Over 32 Miles of Operation without any Incident*
+<br><br>
+
