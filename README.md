@@ -34,13 +34,15 @@ The code model for generating paths that satisfy the listed goals is described i
 
 ### General Motion
 
-The vehicle in the simulator will move from one path point to the next one every 20 ms.  Therefore, in order to move the vehicle on the road, a series of x,y pair path points need to be created, and these path points will form the trajectory of the vehicle.  Velocity of the vehicle will be controlled by the spacing between these path points.  The goal is to achieve 50 MPH without passing this limit in all situation while maximizing the speed.  Localization information is provided by the simulator and they are loaded into main.cpp from line 231 to 236.  Both 2D cartesian coordinates and Frenet coordinates are given to describe the state of the vehicle. Since it is required that the acceleration and jerk does not exceed the prescribed limit, the starting velocity of the vehicle is set to 0 (main.cpp, line 210), and the linear acceleration of the vehicle is set to 0.224 m/s^2 (main.cpp, line 470 to 473), which was found to be acceptable for the requirements.  Angular acceleration and jerk is controlled by the linear acceleration and the how the trajectory is created.  These will be discussed in the following sections. 
+The vehicle in the simulator will move from one path point to the next one every 20 ms.  Therefore, in order to move the vehicle on the road, a series of x,y pair path points need to be created, and these path points will form the trajectory of the vehicle.  Velocity of the vehicle will be controlled by the spacing between these path points.  The goal is to achieve 50 MPH without passing this limit in all situation while maximizing the speed.  Localization information is provided by the simulator and they are loaded into main.cpp from line 231 to 236.  Both 2D cartesian coordinates and Frenet coordinates are given to describe the state of the vehicle. While the cartesian coordinates are used to calculate path points, Frenet coordinates are used to compute lane changing logic since it is invariant to the curvature of the highway. Waypoints for the map are provided in a CSV file in both coordinate systems.  These waypoints were used to tranform path points between the two coordinate systems.  Since it is required that the acceleration and jerk does not exceed the prescribed limit, the starting velocity of the vehicle is set to 0 (main.cpp, line 210), and the linear acceleration of the vehicle is set to 0.224 m/s^2 (main.cpp, line 470 to 473), which was found to be acceptable for the requirements.  Angular acceleration and jerk is controlled by the speed and the how the trajectory is created.  These will be discussed in the following sections.
 
 ### Complex Path on Highway
+
+
 
 
 
 ### Sensor Fusion and Lane Changing
 
 
-
+Wrapping Back
