@@ -54,14 +54,17 @@ Triggering the lane change state, the algorithm will first determine which lane 
 
 ![alt text][image9]
 
-Figure 1: Simple Lane Change from Left-most Lane to Middle Lane
+*Figure 1: Simple Lane Change from Left-most Lane to Middle Lane*
+
 
 ![alt text][image8]
 
-Figure 2: Simple Lane Change from Right-most Lane to Middle Lane
+*Figure 2: Simple Lane Change from Right-most Lane to Middle Lane*
+
 
 ![alt text][image3]
 
-Figure 3: Lane Change - Prioritizing Right-side Passing of Other Vehicle
+*Figure 3: Lane Change - Prioritizing Right-side Passing of Other Vehicle*
+
 
 Wrapping Back
