@@ -38,7 +38,11 @@ The vehicle in the simulator will move from one path point to the next one every
 
 ### Complex Path on Highway
 
-In order to keep the vehicle to follow the road, which is not a straight line, Frenet coordinate can be used since the s-coordinate follows the curvature of the road and the d-coordinate how far the vehicle is from the center of the road.  These information are inherently useful for lane following calculation.  To keep the vehicle in the targeted lane, a constant d-value can be used.  The s-value of the path points will need to be calculated based on the desired velocity since the vehicle will move from one path point to the next in 20 ms in the simulator.  While staying in one lane is important but if there's slower traffic at your lane, lane changing is an option and should be executed if it is safe to do so.  In order to create a path for changing lanes, a C++ spline tool, [spline.h](http://kluge.in-chemnitz.de/opensource/spline/), was used.  Keypoints on the spline were defined, and the spline tool will interpolate the points and create a trajectory for the car to follow.  Three keypoints are created in line 519 to 520, which depends on the car's current position and the desired lane that it wants to arrive after a lane change.
+In order to keep the vehicle to follow the road, which is not a straight line, Frenet coordinate can be used since the s-coordinate follows the curvature of the road and the d-coordinate how far the vehicle is from the center of the road.  These information are inherently useful for lane following calculation.  To keep the vehicle in the targeted lane, a constant d-value can be used.  The s-value of the path points will need to be calculated based on the desired velocity since the vehicle will move from one path point to the next in 20 ms in the simulator.  
+
+While staying in one lane is important but if there's slower traffic at your lane, lane changing is an option and should be executed if it is safe to do so.  In order to create a path for changing lanes, a C++ spline tool, [spline.h](http://kluge.in-chemnitz.de/opensource/spline/), was used.  Keypoints on the spline were defined, and the spline tool will interpolate the points and create a trajectory for the car to follow.  Three keypoints are 30m apart from each other and they are created in line 519 to 520, which depends on the car's current position and the desired lane that it wants to arrive after a lane change.  After the general path is defined, additional path points are generated along the spline and this is implemented in line 567 to 587.  These points are generated so that the desired reference velocity is achieved and maintained.  The reference velocity was set to 49.5 MPH, which is close to the 50 MPH limit but it also has a safety margin to ensure vehicle does not go over the speed limit.  This is set in the condition for acceleration/deceleration in lines 466 to 473.  
+
+It is also important minimize jerk experienced by the vehicle therefore the transition between the sequential path points need to be smooth.  In order to do that, the previous path points of the vehicle need to be taken into account when creating future path points.  The simulator provides previous path points and this information is loaded to main.cpp in line 239 and 240.  In the start of the path, not too many previous points are available, therefore path points that are tangential to the vehicle is used (see line 490 and 491). As more previous points are generated, the previous path's end points can be used as starting reference for future points (see line 501 to 516).
 
 
 
@@ -47,5 +51,7 @@ In order to keep the vehicle to follow the road, which is not a straight line, F
 ### Sensor Fusion and Lane Changing
 
 Localization information about other cars on the road is provided by the data JSON object from the simulator, which is loaded to main.cpp at line 247.  This information is used to determine where the other cars are and their velocity, so that our vehicle can react to traffic to achieve the objectives, such as avoid collision and lane changing. 
+
+Avoid collision - trigger lane change
 
 Wrapping Back
