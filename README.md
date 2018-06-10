@@ -1,25 +1,43 @@
 # **Term 3 Project 1: Path Planning Project**
 Self-Driving Car Engineer Nanodegree Program
 
-The goals / steps of this project are the following:
+The goals of this project are the following:
 
-* Implement a PID controller in C++ to maneuver the vehicle around the lake race track from the Behavioral Cloning Project
-* The PID procedure follows what was taught in the lessons
-* Calculate the steering angle based on the cross track error (CTR) and the chosen vehicle velocity value
-* The car should not pop up onto ledges or roll over any surfaces that would otherwise be considered unsafe
-
+* Implement a path planner that is able to create smooth, safe paths for the car to follow along a 3 lane highway with traffic
+* Using locaalization, sensor fusion and map data, the path planner will be able to keep the car inside its lane, avoid hitting other cars, and pass slower moving traffic
+* The car is able to drive at least 4.32 miles without incident
+* The car drives according to the speed limit
+* The car does not exceed a total acceleration of 10 m/s^2 and a jerk of 10 m/s^3
+* Car does not have collisions
+* The car doesn't spend more than a 3 second length out side the lane lanes during changing lanes, and every other time the car stays inside one of the 3 lanes on the right hand side of the road
 
 [//]: # (Image References)
 
-[image1]: ./images/High_Speed_Cornering.png "HSC"
-[image2]: ./images/Recovering.png "Recover"
+[image1]: ./images/LaneChange_Close_Rear.png "P1"
+[image2]: ./images/NotChangingLane_OtherLanesOccupied.png "P2"
+[image3]: ./images/Prioritize_Left_Lane_Change.png "P3"
+[image4]: ./images/RelativeVelocityConsidered_CloseDistance.png "P4"
+[image5]: ./images/RightLaneChange_2ndPriority_RelativeSpeed_Considered.png "P5"
+[image6]: ./images/RightLaneChange_Left_Lane_Occupied.png "P6"
+[image7]: ./images/RightLaneChange_Lf_RR_occupied.png "P7"
+[image8]: ./images/Simple_LLC.png "P8"
+[image9]: ./images/Simple_RLC.png "P9"
 
 
-
-The Rubric Points are listed in this following [link](https://review.udacity.com/#!/rubrics/824/view)   
+The Rubric Points are listed in this following [link](https://review.udacity.com/#!/rubrics/1020/view)   
 
 ---
 
-### PID Controller Implementation
+### Path Planner Implementation
 
-Using the simulator provided in the Behavioral Cloning Project, a vehicle is to be maneuvered by a PID controller algorithm, implemented in C++ code.  The PID class is implemented in the PID.cpp and PID.h files.  The simulator provides the cross track error (CTE) to the code and the PID algorithm will compute the steering angle in order to minimize the deviation or error of the vehicle relative to the track.  
+The code model for generating paths that satisfy the listed goals is described in detail in this report.  
+
+### General Motion
+
+### Complex Path on Highway
+
+### Sensor Fusion and Lane Changing
+
+### Assumptions
+
+
