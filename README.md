@@ -79,5 +79,17 @@ In order to safely execute a lane change, a number of factors need to be conside
 *Figure 5: Lane Change not Commenced due to Busy Traffic at the Target Lane*
 <br><br>
 
+Since the velocity of the rear approaching car is considered, a more aggressive lane changing behavior can be programmed while safe operation can still be assured.  Note that it is the relative velocity between our car and the approaching car is the important parameter to be considered.  The relative velocities are calculated in line 323, 370, 443, and 444.  The initial safe distance for lane change is 30m for considering other vehicle from behind our vehicle and it was changed to 20m and safety can still be guaranteed.  Figure 6 and 7 show a close distance between our car and the rear approach car that is on the targeted lane.  In both scenarios, our vehicle executed lane changes safely while maximizing efficiency on the road.
+
+![alt text][image5]
+
+*Figure 6: Getting Ready for Lane Change when Rear Approaching Vehicle is Close-by*
+<br><br>
+
+![alt text][image4]
+
+*Figure 7: Safe Operation for Lane Change by Accounting for Future State of Other Vehicle*
+<br><br>
+
 
 Wrapping Back
