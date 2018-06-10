@@ -55,7 +55,7 @@ Triggering the lane change state, the algorithm will first determine which lane 
 ![alt text][image9]
 
 *Figure 1: Simple Lane Change from Left-most Lane to Middle Lane*
-<br>
+<br><br>
 
 ![alt text][image8]
 
