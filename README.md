@@ -53,12 +53,15 @@ In order to avoid colliding into the car in front of our vehicle, a for loop is 
 Triggering the lane change state, the algorithm will first determine which lane that our vehicle is currently located.  If the vehicle is located in the left-most lane(lane 0) or the right-most lane(lane 2), the only option for lane change is to transistioning to the middle lane, lane 1. See Figure 1 and 2 for illustrations of lane changes to the middle lane.  On the other hand, if the vehicle is in the middle lane, it can go into the left lane or the right lane.  Left-lane change is prioritized over right-lane change due to regulation in many countries(see Figure 3).  
 
 ![alt text][image9]
+
 Figure 1: Simple Lane Change from Left-most Lane to Middle Lane
 
 ![alt text][image8]
+
 Figure 2: Simple Lane Change from Right-most Lane to Middle Lane
 
 ![alt text][image3]
+
 Figure 3: Lane Change - Prioritizing Right-side Passing of Other Vehicle
 
 Wrapping Back
