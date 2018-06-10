@@ -30,7 +30,7 @@ The Rubric Points are listed in this following [link](https://review.udacity.com
 
 ### Path Planner Implementation
 
-The code model for generating paths that satisfy the listed goals is described in detail in this report.  
+The code model for generating paths that satisfy the listed goals is described in detail in this report.  This project uses the Term 3 Simulator to provide visualization of the vehicle opeation, as well as feeding data to the C++ path planning code for path generation.  The focus of this project is to generate a path that the vehicle can follow while satisfying the given goals.   
 
 ### General Motion
 
